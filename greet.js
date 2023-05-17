@@ -16,18 +16,24 @@ let greetier = Greet();
 
 //Click handler for the greet button
 greetBtn.addEventListener('click', function(){
-    var checkedRadio = document.querySelector('input[name="language"]:checked').value;
-    console.log(checkedRadio);
-    greetMessage.innerHTML = greetier.greetMe(nameInput.value, checkedRadio);
-    counterDisplay.innerHTML = greetier.getState().count;
-    console.log(greetier.getState());
+    var checkedRadio = document.querySelector('input[name="language"]:checked');
+    //check if there is a checked radio button
+    if(checkedRadio === null){
+        alert('Select a lingo!!!')
+    } else {
+        console.log(checkedRadio);
+        greetMessage.innerHTML = greetier.greetMe(nameInput.value, checkedRadio.value);
+        counterDisplay.innerHTML = greetier.getState().count;
+        console.log(greetier.getState());
 
-    //clear the input field
-    nameInput.value = '';
-    //clear the language input
-    for(let i = 0; i < radios.length; i++){
-        if(radios[i].checked){
-            radios[i].checked = false;
+        //clear the input field
+        nameInput.value = '';
+        //clear the language input
+        for(let i = 0; i < radios.length; i++){
+            if(radios[i].checked){
+                radios[i].checked = false;
+            }
         }
     }
+    
 });
