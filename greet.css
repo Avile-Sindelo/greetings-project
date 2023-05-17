@@ -52,3 +52,7 @@ body{
     margin: 2px;
     box-shadow: 1px 1px 4px #333;
 }
+
+#greet-message{
+    font-size: 1.2rem;
+}

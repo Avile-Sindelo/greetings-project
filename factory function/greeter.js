@@ -4,7 +4,7 @@ function Greet(){
         count: 0
     }
 
-    function greetMe(name){
+    function greetMe(name, language){
         //message variable for the greeting text
         var message = '';
         //make sure a name has been provided
@@ -17,40 +17,26 @@ function Greet(){
             //handle name with RegEx
 
             //handle language
-            if(radioEnglish.checked){
+            if(language == 'english'){
                 message = 'Hello, ' + name;
-            } else if(radioAfrikaans.checked){
-                message = 'Hola, ' + name;
-            } else if(radioXhosa.checked){
+            } else if(language == 'afrikaans'){
+                message = 'Halo, ' + name;
+            } else if(language == 'xhosa'){
                 message = 'Molo, ' + name;
             } else {
-                message = 'Please make sure you select a language in which ' + name + ' should be greeted';
+                message = 'Please make sure you select a language to greet with';
                 return message;
             }
             //create a property of that name and assign a value of how many times the name has been greeted, 1
-            state[name] = 'greeted!';
+            state[name] = 1;
 
             //increment global counter
             state.count++;
-            //clear the input field
-            nameInput.value = '';
-            //clear the language input
-            for(let i = 0; i < radios.length; i++){
-                if(radios[i].checked){
-                    radios[i].checked = false;
-                }
-            }
         } else {
+            state[name]++;
             //when the name has been greeted before
             message = name + ' has already been greeted!';
-            //clear the input field
-            nameInput.value = '';
-            //clear the language input
-            for(let i = 0; i < radios.length; i++){
-                if(radios[i].checked){
-                    radios[i].checked = false;
-                }
-            }
+
         }
 
         return message;
