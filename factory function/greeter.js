@@ -1,6 +1,6 @@
-function Greet(){
+function Greet(namesGreeted){
 
-    var state = {
+    var state = namesGreeted || {
         count: 0
     }
 

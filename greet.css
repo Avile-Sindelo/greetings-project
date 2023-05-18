@@ -53,6 +53,12 @@ body{
     box-shadow: 1px 1px 4px #333;
 }
 
-#greet-message{
+.greet-message{
     font-size: 1.2rem;
+    color: crimson;
+}
+
+.greeting-success{
+    color: green;
+    font-size: 1.3rem;
 }
