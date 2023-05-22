@@ -58,7 +58,18 @@ body{
     color: crimson;
 }
 
-.greeting-success{
+.greet-success{
     color: green;
     font-size: 1.3rem;
+}
+
+#reset{
+    padding: 5% 10%;
+    background-color: inherit;
+    border: 1.5px solid crimson;
+    color: crimson;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    margin: 15% 0 3% 30%;
+    box-shadow: 1px 1px 3px #333;
 }

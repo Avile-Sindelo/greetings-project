@@ -22,4 +22,9 @@ describe('Greeter factory function testing', function(){
         assert.equal('Molo, Avile', greeted.greetMe('Avile', 'xhosa'));
         assert.equal('Avile has already been greeted!', greeted.greetMe('Avile', 'english'));
     });
+
+    it('should test if the function returns the correct error message when an invalid name has been provided', function(){
+        let greeted = Greet();
+        assert.equal('Please enter a valid name', greeted.greetMe('Avile123'));
+    });
 });
