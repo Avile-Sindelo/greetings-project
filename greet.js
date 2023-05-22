@@ -12,19 +12,23 @@ const resetBtn = document.querySelector('#reset');
 
 //      DOM code ends
 
-//Store an empty state in the localStorage to begin with
-let startingStatus = {
-    count: 0
-};
-
-
 //Get the state stored in the localStorage
-let namesGreeted = JSON.parse(localStorage.getItem('state')) ;
+let namesGreeted;
+if(localStorage['state']){
+    console.log('Justin Credible')
+    namesGreeted = JSON.parse(localStorage.getItem('state'));
+} else {
+    localStorage.setItem('state', JSON.stringify({count:0}))
+    console.log("there's nothing there!")
+    location.reload();
+}
+
 //Instantiate an ojbect from the factory function
 let greetier = Greet(namesGreeted);
-
+console.log(namesGreeted);
 //Initial display of the count stored in local storage 
-counterDisplay.innerHTML = JSON.parse(localStorage.getItem('state')).count;
+counterDisplay.innerHTML = namesGreeted.count;
+
 
 //Click handler for the greet button
 greetBtn.addEventListener('click', function(){
@@ -45,6 +49,7 @@ greetBtn.addEventListener('click', function(){
         //stringify the state and store it in the localStorage
         var stringState = JSON.stringify(greetier.getState());
         localStorage.setItem('state', stringState);
+        console.log(greetier.getState());
 
         //display the counter from the state object stored in localStorage
         var currentlyGreeted = JSON.parse(localStorage.getItem('state'));

@@ -4,6 +4,8 @@ function Greet(namesGreeted){
         count: 0
     }
 
+    console.log(state);
+
     function greetMe(name, language){
         //message variable for the greeting text
         var message = '';
