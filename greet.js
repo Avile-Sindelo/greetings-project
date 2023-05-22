@@ -13,7 +13,7 @@ const resetBtn = document.querySelector('#reset');
 //      DOM code ends
 
 //Get the state stored in the localStorage
-let namesGreeted = JSON.parse(localStorage.getItem('state'));
+let namesGreeted = JSON.parse(localStorage.getItem('state')) || {count:0};
 //Instantiate an ojbect from the factory function
 let greetier = Greet(namesGreeted);
 
