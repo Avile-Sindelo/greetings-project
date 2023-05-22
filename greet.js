@@ -18,7 +18,7 @@ let namesGreeted = JSON.parse(localStorage.getItem('state')) ;
 let greetier = Greet(namesGreeted);
 
 //Initial display of the count stored in local storage 
-counterDisplay.innerHTML = JSON.parse(localStorage.getItem('state')).count || {count:0};
+counterDisplay.innerHTML = 0 ;
 
 
 //Click handler for the greet button
