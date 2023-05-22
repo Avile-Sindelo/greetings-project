@@ -26,7 +26,6 @@ let greetier = Greet(namesGreeted);
 //Initial display of the count stored in local storage 
 counterDisplay.innerHTML = JSON.parse(localStorage.getItem('state')).count;
 
-
 //Click handler for the greet button
 greetBtn.addEventListener('click', function(){
    greetMessage.classList.remove('greet-success');
