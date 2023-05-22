@@ -17,7 +17,7 @@ let startingStatus = {
     count: 0
 };
 
-localStorage.setItem('state', JSON.stringify(startingStatus))
+
 //Get the state stored in the localStorage
 let namesGreeted = JSON.parse(localStorage.getItem('state')) ;
 //Instantiate an ojbect from the factory function
