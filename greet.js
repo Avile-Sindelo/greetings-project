@@ -14,7 +14,6 @@ const resetBtn = document.querySelector('#reset');
 
 //Get the state stored in the localStorage
 let namesGreeted = JSON.parse(localStorage.getItem('state'));
-console.log(namesGreeted);
 //Instantiate an ojbect from the factory function
 let greetier = Greet(namesGreeted);
 
@@ -37,18 +36,16 @@ greetBtn.addEventListener('click', function(){
     } else {
         //Display the greeting results on the greet message element
         greetMessage.innerHTML = greetier.greetMe(nameInput.value, checkedRadio.value);
-        console.log(greetier.getState());
 
         //stringify the state and store it in the localStorage
         var stringState = JSON.stringify(greetier.getState());
         localStorage.setItem('state', stringState);
-        console.log(stringState);
 
         //display the counter from the state object stored in localStorage
         var currentlyGreeted = JSON.parse(localStorage.getItem('state'));
         counterDisplay.innerHTML = currentlyGreeted.count;
-        console.log(currentlyGreeted);
 
+        //Remove the normal greet message class and add the styling for a successful greeting
          greetMessage.classList.remove('greet-message');
          greetMessage.classList.add('greet-success');
 
@@ -64,10 +61,11 @@ greetBtn.addEventListener('click', function(){
     
 });
 
-        //RESET BUTTON
+             //RESET BUTTON
 resetBtn.addEventListener('click', function(){
     //remove the state from localStorage and IMMEDIATELY create and store a new clean object back in the state
     alert('You are about to reset the the Widget');
+
     //create a new state variable to start with
     let initialState = {
         count: 0
@@ -81,7 +79,6 @@ resetBtn.addEventListener('click', function(){
     //IMMEDIATELY store the new stringified object create above in the localStorage
     localStorage.setItem('state', resetObject);
     
-    console.log(JSON.parse(localStorage.getItem('state')).count);
     //update the counter display
     counterDisplay.innerHTML = JSON.parse(localStorage.getItem('state')).count;
 
