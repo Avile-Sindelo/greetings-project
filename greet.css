@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Courgette&family=Dancing+Script:wght@600&family=Faster+One&family=Frijole&family=Kalam&family=Londrina+Sketch&family=Poppins&family=Raleway+Dots&family=Rubik+Dirt&family=Rubik+Iso&family=Rubik+Puddles&family=Smokum&family=Stick+No+Bills:wght@300;500&family=Vast+Shadow&display=swap');
+
 body{
     background-color: #333;
 }
@@ -28,6 +30,13 @@ body{
     border-radius: 5px;
     color: white;
     box-shadow: 1px 1px 5px #333;
+    text-shadow: 1px 1px 1px #333;
+}
+
+#greet-btn:hover{
+    background-color: white;
+    color: #FF6D60;
+    text-shadow: 1px 1px 1px #333;
 }
 
 .counter{
@@ -40,8 +49,9 @@ body{
 
 .greeting-header{
     text-align: center;
-    font-size: 3rem;
+    font-size: 3.5rem;
     color: #333;
+    font-family: 'Rubik Puddles', cursive;
     text-shadow: 1px 1px 3px white;
 }
 
@@ -72,4 +82,18 @@ body{
     border-radius: 3px;
     margin: 15% 0 3% 30%;
     box-shadow: 1px 1px 3px #333;
+    text-shadow: 1px 1px 1px #333;
+}
+
+#reset:hover{
+    background-color: crimson;
+    color: lightseagreen;
+    text-shadow: 1px 1px 1px #333;
+}
+
+@media screen AND (max-width: 945px) {
+    #container{
+        display: flex;
+        flex-direction: column;
+    }
 }

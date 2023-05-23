@@ -15,17 +15,15 @@ const resetBtn = document.querySelector('#reset');
 //Get the state stored in the localStorage
 let namesGreeted;
 if(localStorage['state']){
-    console.log('Justin Credible')
     namesGreeted = JSON.parse(localStorage.getItem('state'));
 } else {
     localStorage.setItem('state', JSON.stringify({count:0}))
-    console.log("there's nothing there!")
     location.reload();
 }
 
 //Instantiate an ojbect from the factory function
 let greetier = Greet(namesGreeted);
-console.log(namesGreeted);
+
 //Initial display of the count stored in local storage 
 counterDisplay.innerHTML = namesGreeted.count;
 
