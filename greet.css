@@ -52,7 +52,7 @@ body{
     font-size: 3.5rem;
     color: #333;
     font-family: 'Rubik Puddles', cursive;
-    text-shadow: 1px 1px 3px white;
+    text-shadow: 2px 2px 1px white;
 }
 
 #name-input{
