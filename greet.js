@@ -27,19 +27,34 @@ let greetier = Greet(namesGreeted);
 //Initial display of the count stored in local storage 
 counterDisplay.innerHTML = namesGreeted.count;
 
+//create a function to clear the message 
+function clearMessage(){
+    greetMessage.innerHTML = '';
+}
 
+function resetMessage(){
+    greetMessage.innerHTML = 'The widget has been reset successfully';
+    greetMessage.classList.remove('greet-success');
+    greetMessage.classList.remove('greet-message');
+    greetMessage.classList.add('greet-reset');
+
+}
 //Click handler for the greet button
 greetBtn.addEventListener('click', function(){
    greetMessage.classList.remove('greet-success');
+   greetMessage.classList.remove('greet-reset');
    greetMessage.classList.add('greet-message');
    var checkedRadio = document.querySelector('input[name="language"]:checked');
    
    if(nameInput.value === '' && checkedRadio === null){
         greetMessage.innerHTML = 'Please provide both the name to greet, and the language to greet with';
+        setTimeout(clearMessage, 3000);
    } else if(nameInput.value === ''){
         greetMessage.innerHTML = 'Please provide a name for the function to greet';
+        setTimeout(clearMessage, 3000);
     } else if(checkedRadio === null){
         greetMessage.innerHTML = 'Please select a language to greet with';
+        setTimeout(clearMessage, 3000);
     } else {
         //Display the greeting results on the greet message element
         greetMessage.innerHTML = greetier.greetMe(nameInput.value, checkedRadio.value);
@@ -47,15 +62,16 @@ greetBtn.addEventListener('click', function(){
         //stringify the state and store it in the localStorage
         var stringState = JSON.stringify(greetier.getState());
         localStorage.setItem('state', stringState);
-        console.log(greetier.getState());
+        //console.log(greetier.getState());
 
         //display the counter from the state object stored in localStorage
         var currentlyGreeted = JSON.parse(localStorage.getItem('state'));
         counterDisplay.innerHTML = currentlyGreeted.count;
 
         //Remove the normal greet message class and add the styling for a successful greeting
-         greetMessage.classList.remove('greet-message');
-         greetMessage.classList.add('greet-success');
+        greetMessage.classList.remove('greet-message');
+        greetMessage.classList.remove('greet-reset');
+        greetMessage.classList.add('greet-success');
 
         //clear the input field
         nameInput.value = '';
@@ -65,6 +81,8 @@ greetBtn.addEventListener('click', function(){
                 radios[i].checked = false;
             }
         }
+        //Clear the message after 3 seconds
+        setTimeout(clearMessage, 3000);
     }   
     
 });
@@ -72,8 +90,7 @@ greetBtn.addEventListener('click', function(){
              //RESET BUTTON
 resetBtn.addEventListener('click', function(){
     //remove the state from localStorage and IMMEDIATELY create and store a new clean object back in the state
-    alert('You are about to reset the the Widget');
-
+   
     //create a new state variable to start with
     let initialState = {
         count: 0
@@ -89,9 +106,10 @@ resetBtn.addEventListener('click', function(){
     
     //update the counter display
     counterDisplay.innerHTML = JSON.parse(localStorage.getItem('state')).count;
-
+ 
     //Remove any text on the greet message
-    greetMessage.innerHTML = '';
+    //greetMessage.innerHTML = '';
+    
     //Restore the normal color for the greet message
     greetMessage.classList.replace('greet-success', 'greet-message');
     //clear the input field
@@ -102,6 +120,14 @@ resetBtn.addEventListener('click', function(){
             radios[i].checked = false;
         }
     }
-
-    location.reload();
+    
+    resetMessage();
+   
+    setTimeout(()=>{
+        greetMessage.innerHTML = '';
+        location.reload();
+    }, 3000);
+    
+    
+    
 });

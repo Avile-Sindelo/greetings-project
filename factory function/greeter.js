@@ -4,8 +4,6 @@ function Greet(namesGreeted){
         count: 0
     }
 
-    console.log(state);
-
     function greetMe(name, language){
         //message variable for the greeting text
         var message = '';
@@ -16,30 +14,30 @@ function Greet(namesGreeted){
         } else {
             var pattern = /^[a-zA-Z\s]+$/;
             if(pattern.test(name)){
-                //Proceed with the greeting
-               
+                //Convert the name to lower case
+                let nameSmallCase = name.toLowerCase();
                 //If the name has NOT been greeted before
-                if(state[name] == undefined){
+                if(state[nameSmallCase] == undefined){
                     //handle language
                     if(language == 'english'){
-                        message = 'Hello, ' + name;
+                        message = 'Hello, ' + nameSmallCase[0].toUpperCase() + nameSmallCase.slice(1);
                     } else if(language == 'afrikaans'){
-                        message = 'Halo, ' + name;
+                        message = 'Halo, ' + nameSmallCase[0].toUpperCase() + nameSmallCase.slice(1);
                     } else if(language == 'xhosa'){
-                        message = 'Molo, ' + name;
+                        message = 'Molo, ' + nameSmallCase[0].toUpperCase() + nameSmallCase.slice(1);
                     } else {
                         message = 'Please make sure you select a language to greet with';
                         return message;
                     }
                     //create a property of that name and assign a value of how many times the name has been greeted, 1
-                    state[name] = 1;
+                    state[nameSmallCase] = 1;
 
                     //increment global counter
                     state.count++;
                 } else {
-                    state[name]++;
+                    state[nameSmallCase]++;
                     //when the name has been greeted before
-                    message = name + ' has already been greeted!';
+                    message = nameSmallCase[0].toUpperCase() + nameSmallCase.slice(1) + ' has already been greeted!';
                 }
             } else {
                 //Invalid name

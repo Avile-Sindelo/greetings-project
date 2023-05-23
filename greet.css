@@ -73,6 +73,11 @@ body{
     font-size: 1.3rem;
 }
 
+.greet-reset{
+    color: black;
+    font-size: 1.3rem;
+}
+
 #reset{
     padding: 5% 10%;
     background-color: inherit;
