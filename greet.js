@@ -84,7 +84,7 @@ greetBtn.addEventListener('click', function(){
         //Clear the message after 3 seconds
         setTimeout(clearMessage, 3000);
     }   
-    
+     
 });
 
              //RESET BUTTON

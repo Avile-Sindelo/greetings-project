@@ -1,7 +1,7 @@
 function Greet(namesGreeted){
 
     var state = namesGreeted || {
-        count: 0
+        count: 0 
     }
 
     function greetMe(name, language){
