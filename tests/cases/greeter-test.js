@@ -24,7 +24,10 @@ describe('Greeter factory function testing', function(){
     });
 
     it('should test if the function returns the correct error message when an invalid name has been provided', function(){
+        var checkedRadio = document.querySelector('input[name="language"]:checked');
         let greeted = Greet();
+        
         assert.equal('Please enter a valid name', greeted.greetMe('Avile123'));
+        assert.equal(true, greeted.domErrorHandling(nameInput, checkedRadio));
     });
 });

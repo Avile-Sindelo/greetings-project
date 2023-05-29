@@ -4,6 +4,36 @@ function Greet(namesGreeted){
         count: 0 
     }
 
+    function domErrorHandling(nameInput, checkedRadio, greetMessage){
+        if(nameInput.value === '' && checkedRadio === null){
+            greetMessage.innerHTML = 'Please provide both the name to greet, and the language to greet with';
+            setTimeout(clearMessage, 3000);
+            //Return true to signify there was an error
+            return true;
+       } else if(nameInput.value === ''){
+            greetMessage.innerHTML = 'Please provide a name for the function to greet';
+            setTimeout(clearMessage, 3000);
+            //clear the language input
+            for(let i = 0; i < radios.length; i++){
+                if(radios[i].checked){
+                    radios[i].checked = false;
+                }   
+            }
+            //Return true to signify there was an error
+            return true; 
+
+        } else if(checkedRadio === null){
+            greetMessage.innerHTML = 'Please select a language to greet with';
+            setTimeout(clearMessage, 3000);
+            //clear the input field
+            nameInput.value = ''; 
+            //Return true to signify there was an error
+            return true;
+        }
+        //Return false when there was no error
+        return false;
+    }
+
     function greetMe(name, language){
         //message variable for the greeting text
         var message = '';
@@ -45,7 +75,6 @@ function Greet(namesGreeted){
                 return message;
             }
         }
-        
 
         return message;
         
@@ -57,6 +86,7 @@ function Greet(namesGreeted){
 
     return {
         greetMe,
-        getState
+        getState,
+        domErrorHandling
     }
 }

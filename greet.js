@@ -46,16 +46,27 @@ greetBtn.addEventListener('click', function(){
    greetMessage.classList.add('greet-message');
    var checkedRadio = document.querySelector('input[name="language"]:checked');
    
-   if(nameInput.value === '' && checkedRadio === null){
-        greetMessage.innerHTML = 'Please provide both the name to greet, and the language to greet with';
-        setTimeout(clearMessage, 3000);
-   } else if(nameInput.value === ''){
-        greetMessage.innerHTML = 'Please provide a name for the function to greet';
-        setTimeout(clearMessage, 3000);
-    } else if(checkedRadio === null){
-        greetMessage.innerHTML = 'Please select a language to greet with';
-        setTimeout(clearMessage, 3000);
-    } else {
+//    if(nameInput.value === '' && checkedRadio === null){
+//         greetMessage.innerHTML = 'Please provide both the name to greet, and the language to greet with';
+//         setTimeout(clearMessage, 3000);
+//    } else if(nameInput.value === ''){
+//         greetMessage.innerHTML = 'Please provide a name for the function to greet';
+//         setTimeout(clearMessage, 3000);
+//         //clear the language input
+//         for(let i = 0; i < radios.length; i++){
+//             if(radios[i].checked){
+//                 radios[i].checked = false;
+//             }   
+//         }           
+//     } else if(checkedRadio === null){
+//         greetMessage.innerHTML = 'Please select a language to greet with';
+//         setTimeout(clearMessage, 3000);
+//         //clear the input field
+//         nameInput.value = '';
+
+     if(greetier.domErrorHandling(nameInput, checkedRadio, greetMessage)){
+        console.log('An error occurred!');
+     } else {
         //Display the greeting results on the greet message element
         greetMessage.innerHTML = greetier.greetMe(nameInput.value, checkedRadio.value);
 
@@ -91,6 +102,8 @@ greetBtn.addEventListener('click', function(){
 resetBtn.addEventListener('click', function(){
     //remove the state from localStorage and IMMEDIATELY create and store a new clean object back in the state
    
+    //alert the user they are about to reset the widget
+    alert('You are about to reset the widget data!');
     //create a new state variable to start with
     let initialState = {
         count: 0
